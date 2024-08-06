@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import MitigationStrategyCard from './MitigationStrategy'; // Adjust the import if necessary
+import ProcessCard from './ProcessCard';
 
 const Form = () => {
   const [output, setOutput] = useState([]);
@@ -22,11 +22,22 @@ const Form = () => {
     try {
       const response = await axios.post('http://localhost:3000/', formData);
       console.log('Data submitted successfully:', response.data);
-      setOutput(response.data);
-     
+      const formattedData = formatResponseData(response.data);
+      setOutput(formattedData);
     } catch (error) {
       console.error('There was an error submitting the form!', error);
     }
+  };
+
+  const formatResponseData = (data) => {
+    const result = [];
+    for (let i = 0; i < data.length; i += 2) {
+      result.push({
+        'Mitigation Strategy': data[i],
+        'Description': data[i + 1]
+      });
+    }
+    return result;
   };
 
   return (
@@ -53,14 +64,13 @@ const Form = () => {
             </div>
           </form>
         </div>
-        {output.length > 0 && (
-          <div className="bg-white p-8 rounded-lg shadow-lg w-full lg:w-1/2" style={{ maxHeight: '600px', overflowY: 'auto' }}>
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Mitigation Strategies</h3>
-            {output.map((strategy, index) => (
-              <MitigationStrategyCard key={index} strategy={strategy} />
-            ))}
-          </div>
-        )}
+        
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full lg:w-1/2" style={{ maxHeight: '600px', overflowY: 'auto' }}>
+          <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Process Steps</h2>
+          {output.map((item, index) => (
+            <ProcessCard key={index} step={item['Mitigation Strategy']} description={item['Description']} />
+          ))}
+        </div>
       </div>
     </div>
   );
