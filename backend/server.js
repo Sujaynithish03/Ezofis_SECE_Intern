@@ -68,22 +68,23 @@ function createPrompt(data) {
     console.log(process);
     return `
     Provide a Step by Step workflow for the ${process}. For example, for the Employee onboarding, the workflow should be:
-    Step 1: Pre-Onboarding
-    Description: Send offer letter and gather necessary paperwork (employment agreement, tax forms, etc.).
-    Step 2: Orientation
-    Description: Welcome new hire and provide an overview of the company, its culture, and its policies. Conduct a tour of the facilities and introduce the employee to their team.
-    Step 3: Paperwork and Administration
-    Description: Complete employment paperwork (I-9, W-4, Direct Deposit Form, etc.) and set up payroll. Issue company hardware and access to necessary systems and software.
-    Step 4: Training and Development
-    Description: Provide role-specific training to ensure the employee understands their responsibilities and expectations. Offer ongoing training and development opportunities to enhance their skills and knowledge.
-    Step 5: Buddy/Mentor Assignment
-    Description: Pair the new hire with a buddy or mentor who can provide support and guidance during the onboarding process. Facilitate regular check-ins to monitor progress and address any concerns.
-    Step 6: Performance Management
-    Description: Establish clear performance expectations and metrics with the employee. Set regular performance reviews to provide feedback and support their growth and development.
-    Step 7: Feedback and Evaluation
-    Description: Regularly assess the effectiveness of the onboarding process by gathering feedback from both the new hire and their manager. Make adjustments as needed to improve the onboarding experience and ensure a successful transition.
-
     The response should be in a similar format must contain steps and a short description about the steps and apply to ${process} process.The output should not contain the ${process} in the first line. Ensure the description is at single line
+      'Step 1: Pre-Onboarding',
+      'Description: Send offer letter and gather necessary paperwork (employment agreement, tax forms, etc.)',
+      'Step 2: Orientation',
+      'Description: Welcome new hire and provide an overview of the company, its culture, and its policies. Conduct a tour of the facilities and introduce the employee to their team.',
+      'Step 3: Paperwork and Administration',
+      'Description: Complete employment paperwork (I-9, W-4, Direct Deposit Form, etc.) and set up payroll. Issue company hardware and access to necessary systems and software.',
+      'Step 4: Training and Development',
+      'Description: Provide role-specific training to ensure the employee understands their responsibilities and expectations. Offer ongoing training and development opportunities to enhance their skills and knowledge.',
+      'Step 5: Buddy/Mentor Assignment',
+      'Description: Pair the new hire with a buddy or mentor who can provide support and guidance during the onboarding process. Facilitate regular check-ins to monitor progress and address any concerns.',
+      'Step 6: Performance Management',
+      'Description: Establish clear performance expectations and metrics with the employee. Set regular performance reviews to provide feedback and support their growth and development.',
+      'Step 7: Feedback and Evaluation',
+      'Description: Regularly assess the effectiveness of the onboarding process by gathering feedback from both the new hire and their manager. Make adjustments as needed to improve the onboarding experience and ensure a successful transition.'
+
+    Make sure the response is in the same format as the example above. Don't make any changes to the ${process} in the response. Compulsorily it's should be in the same format only 
     `;
 }
 
